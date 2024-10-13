@@ -1,20 +1,18 @@
 #include "struct.h"
 
-void systemClear(){
-
+void systemClear()
+{
     #ifdef _WIN32
         system("cls");
-
     #else
         system("clear");
-
     #endif
-    }
+}
 bool checkLose(Element grid[HEIGHT][WIDTH], int boxX, int boxY) 
 {
    
-
-    if (grid[boxX][boxY] == WALL) {
+    if (grid[boxX][boxY] == WALL) 
+    {
         return true; 
     }
     return false; 
@@ -59,7 +57,6 @@ void playerMove(char direction, Element grid[HEIGHT][WIDTH], playerPosition* pla
             exit(0);
     }
         
-        
         if (grid[boxNewX][boxNewY] == EMPTY) 
         {
             grid[boxNewX][boxNewY] = BOX; 
@@ -88,7 +85,6 @@ void playerMove(char direction, Element grid[HEIGHT][WIDTH], playerPosition* pla
         }
     }
 
-    
     if (grid[newX][newY] == EMPTY || grid[newX][newY] == GOAL) 
     {
         grid[newX][newY] = PLAYER;   
@@ -110,7 +106,6 @@ bool checkWin(Element grid[HEIGHT][WIDTH])
     return true;
 }
 
-
 void init_grid(Element grid[HEIGHT][WIDTH]) 
 {
     for (int i = 0; i < HEIGHT; i++) {
@@ -124,7 +119,6 @@ void init_grid(Element grid[HEIGHT][WIDTH])
         }
     }
 }
-
 
 void printGrid(Element grid[HEIGHT][WIDTH])
 {
@@ -149,7 +143,6 @@ void spawnPlayer(Element grid[HEIGHT][WIDTH], playerPosition* playerPos)
     playerPos->y = y;
 }
 
-
 void spawnBox(Element grid[HEIGHT][WIDTH]) 
 {
     int x, y;
@@ -172,26 +165,19 @@ void spawnGoal(Element grid[HEIGHT][WIDTH])
     grid[x][y] = GOAL;
 }
 
-
 int main(int argc, char const *argv[])
 {	
 
 	Element grid[HEIGHT][WIDTH];
 	init_grid(grid);
-
-		systemClear(grid);
-
-
+	systemClear(grid);
 	srand(time(NULL));
-
 	spawnBox(grid);
-
 	spawnGoal(grid);
 
 	playerPosition playerPos;
-
+	
 	spawnPlayer(grid, &playerPos);
-
 	printGrid(grid);
 
     char move;
@@ -201,9 +187,7 @@ int main(int argc, char const *argv[])
         scanf(" %c", &move);
         
         systemClear(grid);
-
         playerMove(move, grid, &playerPos);
-        
         printGrid(grid);
 
         if (checkWin(grid))
