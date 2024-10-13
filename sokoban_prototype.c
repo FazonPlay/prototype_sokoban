@@ -10,7 +10,8 @@ void systemClear(){
 
     #endif
     }
-bool checkLose(Element grid[HEIGHT][WIDTH], int boxX, int boxY) {
+bool checkLose(Element grid[HEIGHT][WIDTH], int boxX, int boxY) 
+{
    
 
     if (grid[boxX][boxY] == WALL) {
@@ -19,7 +20,8 @@ bool checkLose(Element grid[HEIGHT][WIDTH], int boxX, int boxY) {
     return false; 
 }
 
-void playerMove(char direction, Element grid[HEIGHT][WIDTH], playerPosition* playerPos) {
+void playerMove(char direction, Element grid[HEIGHT][WIDTH], playerPosition* playerPos)
+{
     int x = playerPos->x;
     int y = playerPos->y;
 
@@ -96,7 +98,8 @@ void playerMove(char direction, Element grid[HEIGHT][WIDTH], playerPosition* pla
     }
 }
 
-bool checkWin(Element grid[HEIGHT][WIDTH]) {
+bool checkWin(Element grid[HEIGHT][WIDTH]) 
+{
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
             if (grid[i][j] == GOAL) {
@@ -108,7 +111,8 @@ bool checkWin(Element grid[HEIGHT][WIDTH]) {
 }
 
 
-void init_grid(Element grid[HEIGHT][WIDTH]) {
+void init_grid(Element grid[HEIGHT][WIDTH]) 
+{
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
             
@@ -122,7 +126,8 @@ void init_grid(Element grid[HEIGHT][WIDTH]) {
 }
 
 
-void printGrid(Element grid[HEIGHT][WIDTH]) {
+void printGrid(Element grid[HEIGHT][WIDTH])
+{
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
             printf("%c", grid[i][j]);
@@ -131,7 +136,8 @@ void printGrid(Element grid[HEIGHT][WIDTH]) {
     }
 }
 
-void spawnPlayer(Element grid[HEIGHT][WIDTH], playerPosition* playerPos) {
+void spawnPlayer(Element grid[HEIGHT][WIDTH], playerPosition* playerPos) 
+{
     int x, y;
     do {
         x = rand() % (8) + 1;
@@ -144,7 +150,8 @@ void spawnPlayer(Element grid[HEIGHT][WIDTH], playerPosition* playerPos) {
 }
 
 
-void spawnBox(Element grid[HEIGHT][WIDTH]) {
+void spawnBox(Element grid[HEIGHT][WIDTH]) 
+{
     int x, y;
     do {
         x = rand() % (8) + 1;
@@ -154,7 +161,8 @@ void spawnBox(Element grid[HEIGHT][WIDTH]) {
     grid[x][y] = BOX;
 }
 
-void spawnGoal(Element grid[HEIGHT][WIDTH]) {
+void spawnGoal(Element grid[HEIGHT][WIDTH]) 
+{
     int x, y;
     do {
         x = rand() % (8) + 1;
@@ -187,7 +195,8 @@ int main(int argc, char const *argv[])
 	printGrid(grid);
 
     char move;
-    while (true) {
+    while (true) 
+    {
         printf("Move (W,A,S,D)\n");
         scanf(" %c", &move);
         
@@ -195,7 +204,6 @@ int main(int argc, char const *argv[])
 
         playerMove(move, grid, &playerPos);
         
-
         printGrid(grid);
 
         if (checkWin(grid))
