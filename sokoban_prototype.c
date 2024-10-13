@@ -190,9 +190,11 @@ int main(int argc, char const *argv[])
     while (true) {
         printf("Move (W,A,S,D)\n");
         scanf(" %c", &move);
+        
+        systemClear(grid);
 
         playerMove(move, grid, &playerPos);
-        systemClear(grid);
+        
 
         printGrid(grid);
 
