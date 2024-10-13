@@ -9,7 +9,6 @@
 #define WIDTH 10
 #define HEIGHT 10
 
-
 typedef enum {
     EMPTY = ' ',
     WALL = '#',
@@ -18,14 +17,10 @@ typedef enum {
     GOAL = '.'
 } Element;
 
-
 typedef struct {
     int x;
     int y;
 } playerPosition;
-
-
-
 
 #endif
 
